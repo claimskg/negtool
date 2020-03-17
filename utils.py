@@ -22,16 +22,16 @@ def get_affix_cue(cue, affixal_cue_lexicon):
     return None
 
 def print_cue_lexicons(cue_lexicon, affixal_cue_lexicon):
-    print "Cues:"
-    for key, value in cue_lexicon.iteritems():
-        print key, value
-    print "\nAffixal cues:"
+    print("Cues:")
+    for key, value in cue_lexicon.items():
+        print(key, value)
+    print("\nAffixal cues:")
     for cue in affixal_cue_lexicon:
-        print cue
+        print(cue)
 
 def make_dir_graph_for_sentence(sentence):
     graph = nx.DiGraph()
-    for key, value in sentence.iteritems():
+    for key, value in sentence.items():
         if isinstance(key, int):
             head_index = int(value['head']) - 1
             if head_index > -1:
@@ -40,7 +40,7 @@ def make_dir_graph_for_sentence(sentence):
 
 def make_bidir_graph_for_sentence(sentence):
     graph = nx.DiGraph()
-    for key, value in sentence.iteritems():
+    for key, value in sentence.items():
         if isinstance(key, int):
             head_index = int(value['head']) - 1
             if head_index > -1:
@@ -118,14 +118,14 @@ def check_neither_nor(sentence, index):
     return False
 
 def find_neither_index(sentence):
-    for key,value in sentence.iteritems():
+    for key,value in sentence.items():
         if isinstance(key,int):
             if value[3].lower() == "neither":
                 return key
     return -1
 
 def find_nor_index(sentence):
-    for key,value in sentence.iteritems():
+    for key,value in sentence.items():
         if isinstance(key,int):
             if value[3].lower() == "nor":
                 return key
@@ -140,7 +140,7 @@ def make_complete_labelarray(sentences, labels):
     label_counter = 0
     for sent in sentences:
         sent_labels = []
-        for key, value in sent.iteritems():
+        for key, value in sent.items():
             if isinstance(key, int):
                 if 'not-pred-cue' in value:
                     sent_labels.append(-2)
@@ -192,7 +192,7 @@ def convert_to_IO(y):
 def count_multiword_cues(sentence, labels):
     mwc_counter = 0
     has_mwc = False
-    for key,value in sentence.iteritems():
+    for key,value in sentence.items():
         if isinstance(key,int):
             if check_by_no_means(sentence, key):
                 labels[key-1] = 1

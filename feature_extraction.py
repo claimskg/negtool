@@ -14,7 +14,7 @@ def extract_features_cue(sentence_dicts, cue_lexicon, affixal_cue_lexicon, mode=
     """
     instances = []
     for sent in sentence_dicts:
-        for key, value in sent.iteritems():
+        for key, value in sent.items():
             features = {}
             if isinstance(key, int):
                 if not_known_cue_word(value[3].lower(), cue_lexicon, affixal_cue_lexicon):
@@ -66,7 +66,7 @@ def extract_labels_cue(sentence_dicts, cue_lexicon, affixal_cue_lexicon):
     """
     labels = []
     for sent in sentence_dicts:
-        for key, value in sent.iteritems():
+        for key, value in sent.items():
             if isinstance(key, int):
                 if not_known_cue_word(value[3].lower(), cue_lexicon, affixal_cue_lexicon):
                     continue
@@ -91,7 +91,7 @@ def extract_features_scope(sentence_dicts, mode='training'):
         bidir_graph = make_bidir_graph_for_sentence(sent)
         for cue_i, (cue, cue_position, cue_type) in enumerate(sent['cues']):
             seq_length = -1
-            for key, value in sent.iteritems():
+            for key, value in sent.items():
                 features = {}
                 if isinstance(key, int):
                     features['token'] = value[3]
@@ -161,7 +161,7 @@ def extract_labels_scope(sentence_dicts, config):
             continue
         for cue_i, (cue, cue_position, cue_type) in enumerate(sent['cues']):
             prev_label = 1
-            for key, value in sent.iteritems():
+            for key, value in sent.items():
                 if isinstance(key, int):
                     scope = sent['scopes'][cue_i]
                     if any(key in s for s in scope):

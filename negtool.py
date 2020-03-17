@@ -66,14 +66,14 @@ if __name__ == '__main__':
 
     filename = args.filename
     if not path.isfile(filename):
-        print "ERROR: File does not exist. Program will exit"
+        print("ERROR: File does not exist. Program will exit")
         sys.exit(1)
     if args.mode == 'raw':
         path_to_corenlp = args.directory
         if args.directory == None:
-            path_to_corenlp = raw_input("Absolute path to CoreNLP directory:")
+            path_to_corenlp = input("Absolute path to CoreNLP directory:")
         elif not path.exists(args.directory):
-            path_to_corenlp = raw_input("ERROR: You specified the wrong path. Please specify the right path:")
+            path_to_corenlp = input("ERROR: You specified the wrong path. Please specify the right path:")
         run_corenlp(path_to_corenlp, args.filename)
         filename = args.filename + ".conll"
 

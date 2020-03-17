@@ -9,7 +9,7 @@ def run_corenlp(corenlp_path, filename):
         line1 = infile.readline()
         line2 = infile.readline()
         if line1.split()[0] == '1' and line2.split()[0] == '2':
-            print "ERROR: File seems to be parsed already"
+            print("ERROR: File seems to be parsed already")
             sys.exit(1)
             
     absolute_path = corenlp_path + "/*"
@@ -41,7 +41,7 @@ def read_parsed_data(filename, mode):
                 counter = 0
                 continue
             if counter == 0 and tokens[0] != '1':
-                print "ERROR: Trying to read file that is not (properly) parsed"
+                print("ERROR: Trying to read file that is not (properly) parsed")
                 sys.exit(1)
             for i in range(3):
                 if tokens[i] != "_":
